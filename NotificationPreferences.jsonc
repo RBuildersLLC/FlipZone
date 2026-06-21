@@ -1,0 +1,198 @@
+{
+  "name": "NotificationPreferences",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Owner user ID \u2014 one record per user"
+    },
+    "user_role": {
+      "type": "string",
+      "enum": [
+        "buyer",
+        "seller"
+      ],
+      "description": "Only buyer and seller accounts may have custom notification preferences"
+    },
+    "package_delivered": {
+      "type": "object",
+      "description": "Sound config for Package Delivered",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "package_ready": {
+      "type": "object",
+      "description": "Sound config for Package Ready for Pickup",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "pickup_reminder": {
+      "type": "object",
+      "description": "Sound config for Pickup Reminder",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "deadline_approaching": {
+      "type": "object",
+      "description": "Sound config for Pickup Deadline Approaching",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "package_retrieved": {
+      "type": "object",
+      "description": "Sound config for Package Retrieved Successfully",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "seller_shipment_received": {
+      "type": "object",
+      "description": "Sound config for Seller Shipment Received",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "seller_dropoff_confirmed": {
+      "type": "object",
+      "description": "Sound config for Seller Drop-Off Confirmation",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "account_notifications": {
+      "type": "object",
+      "description": "Sound config for Account Notifications",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "library",
+            "upload",
+            "voice"
+          ],
+          "default": "default"
+        },
+        "sound_url": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "user_id",
+    "user_role"
+  ]
+}

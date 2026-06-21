@@ -1,0 +1,43 @@
+{
+  "name": "LateFee",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string"
+    },
+    "buyer_id": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number",
+      "default": 2.0,
+      "description": "Always $2.00 per event"
+    },
+    "fee_number": {
+      "type": "number",
+      "description": "1 = first late fee at 12h, 2+ = every 4h after"
+    },
+    "charged_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hours_overdue": {
+      "type": "number",
+      "description": "How many hours past deadline when charged"
+    },
+    "seller_notified": {
+      "type": "boolean",
+      "default": false
+    },
+    "system_notified": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "transaction_id",
+    "buyer_id",
+    "amount",
+    "fee_number"
+  ]
+}

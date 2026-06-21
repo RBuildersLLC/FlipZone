@@ -1,0 +1,49 @@
+{
+  "name": "EmergencyIncident",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "user_role": {
+      "type": "string",
+      "enum": [
+        "seller",
+        "buyer",
+        "operator"
+      ]
+    },
+    "facility_name": {
+      "type": "string"
+    },
+    "locker_number": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cctv_zone": {
+      "type": "string",
+      "description": "CCTV zone placeholder \u2014 to be linked during review",
+      "default": "PENDING_REVIEW"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "emergency_logged",
+        "under_review",
+        "resolved"
+      ],
+      "default": "emergency_logged"
+    }
+  },
+  "required": [
+    "transaction_id",
+    "user_id",
+    "user_role"
+  ]
+}

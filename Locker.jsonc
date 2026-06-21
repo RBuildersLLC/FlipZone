@@ -1,0 +1,56 @@
+{
+  "name": "Locker",
+  "type": "object",
+  "properties": {
+    "locker_number": {
+      "type": "string",
+      "description": "Human-readable locker identifier (e.g. A-04)"
+    },
+    "location": {
+      "type": "string",
+      "description": "Facility or location name"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "assigned",
+        "active",
+        "flagged",
+        "maintenance"
+      ],
+      "default": "available",
+      "description": "Current operational status of the locker"
+    },
+    "assigned_seller_id": {
+      "type": "string",
+      "description": "User ID of the assigned seller"
+    },
+    "assigned_buyer_id": {
+      "type": "string",
+      "description": "User ID of the assigned buyer/receiver"
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "small",
+        "medium",
+        "large",
+        "xl"
+      ],
+      "default": "medium"
+    },
+    "facility_id": {
+      "type": "string",
+      "description": "Reference to the facility/operator managing this locker"
+    },
+    "cctv_node_id": {
+      "type": "string",
+      "description": "CCTV correlation node identifier"
+    }
+  },
+  "required": [
+    "locker_number",
+    "location"
+  ]
+}

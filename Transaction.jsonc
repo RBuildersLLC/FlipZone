@@ -1,0 +1,202 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "seller_id": {
+      "type": "string",
+      "description": "Seller user ID"
+    },
+    "buyer_id": {
+      "type": "string",
+      "description": "Buyer user ID"
+    },
+    "locker_id": {
+      "type": "string",
+      "description": "Reference to the assigned locker"
+    },
+    "locker_number": {
+      "type": "string",
+      "description": "Human-readable locker ID e.g. B-07"
+    },
+    "facility_name": {
+      "type": "string",
+      "description": "Facility/zone name"
+    },
+    "item_description": {
+      "type": "string",
+      "description": "What is being stored/exchanged"
+    },
+    "transaction_value": {
+      "type": "number",
+      "description": "Optional item value in USD \u2014 stored for audit, dispute reference, and risk scoring only. FlipZone does not charge based on this value."
+    },
+    "pickup_window": {
+      "type": "string",
+      "description": "Pickup window selected by seller e.g. 24 hours"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "initiated",
+        "seller_paid",
+        "seller_codes_issued",
+        "item_dropped",
+        "awaiting_release",
+        "buyer_notified",
+        "buyer_paid",
+        "buyer_codes_issued",
+        "buyer_accessed",
+        "completed",
+        "late",
+        "force_pickup_initiated",
+        "force_pickup_complete",
+        "disputed",
+        "frozen",
+        "cancelled"
+      ],
+      "default": "initiated",
+      "description": "Full transaction state machine status"
+    },
+    "seller_facility_code": {
+      "type": "string",
+      "description": "Seller-only facility entry code \u2014 NOT shared with buyer. Expires on locker close."
+    },
+    "seller_locker_code": {
+      "type": "string",
+      "description": "Locker code \u2014 may be shared with buyer. Connected to the assigned locker/order."
+    },
+    "buyer_facility_code": {
+      "type": "string",
+      "description": "Buyer-only facility entry code \u2014 different from seller facility code. Expires on pickup window."
+    },
+    "buyer_locker_code": {
+      "type": "string",
+      "description": "Locker code issued to buyer \u2014 same credential as seller_locker_code for the same locker."
+    },
+    "manual_code_package": {
+      "type": "object",
+      "description": "Optional operator-issued manual code. Read-only for seller/buyer. Only operators can populate this.",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "locker_number": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "issued_by": {
+          "type": "string"
+        },
+        "expires_at": {
+          "type": "string"
+        }
+      }
+    },
+    "seller_codes_expired": {
+      "type": "boolean",
+      "default": false,
+      "description": "True after seller closes locker"
+    },
+    "buyer_codes_invalidated": {
+      "type": "boolean",
+      "default": false,
+      "description": "True after force pickup or dispute"
+    },
+    "seller_drop_fee_paid": {
+      "type": "boolean",
+      "default": false
+    },
+    "buyer_pickup_fee_paid": {
+      "type": "boolean",
+      "default": false
+    },
+    "retrieval_fee_paid": {
+      "type": "boolean",
+      "default": false,
+      "description": "Force pickup or dispute retrieval fee $4.99"
+    },
+    "seller_item_photo_url": {
+      "type": "string",
+      "description": "Live photo taken by seller at drop-off \u2014 camera-only, no gallery"
+    },
+    "seller_photo_capture_ts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Device timestamp of seller live photo capture"
+    },
+    "seller_photo_upload_ts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Server upload timestamp of seller photo"
+    },
+    "buyer_confirm_photo_url": {
+      "type": "string",
+      "description": "Live photo taken by buyer at pickup \u2014 camera-only, no gallery"
+    },
+    "buyer_photo_capture_ts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Device timestamp of buyer live photo capture"
+    },
+    "buyer_photo_upload_ts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Server upload timestamp of buyer photo"
+    },
+    "seller_locker_opened_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when seller confirmed locker opened"
+    },
+    "locker_closed_by_seller_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when seller confirmed locker closed"
+    },
+    "buyer_released_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when seller pressed Release Buyer Access"
+    },
+    "locker_opened_by_buyer_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "locker_closed_by_buyer_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pickup_deadline_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "12-hour deadline starting from buyer access release"
+    },
+    "late_fee_total": {
+      "type": "number",
+      "default": 0
+    },
+    "late_fee_count": {
+      "type": "number",
+      "default": 0
+    },
+    "dispute_notes": {
+      "type": "string",
+      "description": "Notes submitted by buyer when opening a dispute"
+    },
+    "buyer_name": {
+      "type": "string"
+    },
+    "seller_name": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "seller_id",
+    "item_description"
+  ]
+}

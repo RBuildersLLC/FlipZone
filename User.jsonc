@@ -1,0 +1,55 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "operator",
+        "admin"
+      ],
+      "default": "user",
+      "description": "Platform role. 'user' = regular buyer/seller. 'operator' = facility staff only. 'admin' = system admin."
+    },
+    "active_dashboard": {
+      "type": "string",
+      "enum": [
+        "buyer",
+        "seller"
+      ],
+      "default": "buyer",
+      "description": "Which dashboard is currently active for role=user accounts"
+    },
+    "flip_score": {
+      "type": "number",
+      "default": 0,
+      "description": "Composite trust / reputation score"
+    },
+    "total_sales": {
+      "type": "number",
+      "default": 0
+    },
+    "total_pickups": {
+      "type": "number",
+      "default": 0
+    },
+    "seller_verified": {
+      "type": "boolean",
+      "default": false
+    },
+    "loitering_warnings": {
+      "type": "number",
+      "default": 0
+    },
+    "account_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "under_review",
+        "suspended"
+      ],
+      "default": "active"
+    }
+  }
+}
