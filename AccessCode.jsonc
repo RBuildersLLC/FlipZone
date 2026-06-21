@@ -1,0 +1,61 @@
+{
+  "name": "AccessCode",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Reference to parent transaction"
+    },
+    "code_type": {
+      "type": "string",
+      "enum": [
+        "seller_facility",
+        "seller_locker",
+        "buyer_facility",
+        "buyer_locker",
+        "retrieval_facility",
+        "retrieval_locker"
+      ],
+      "description": "Which step and role this code serves"
+    },
+    "code": {
+      "type": "string",
+      "description": "Randomized unique access code"
+    },
+    "issued_to_user_id": {
+      "type": "string"
+    },
+    "issued_to_role": {
+      "type": "string",
+      "enum": [
+        "seller",
+        "buyer",
+        "system"
+      ]
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "used_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "used",
+        "expired",
+        "revoked"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "transaction_id",
+    "code_type",
+    "code",
+    "issued_to_role"
+  ]
+}

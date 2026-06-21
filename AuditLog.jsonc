@@ -1,0 +1,101 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Reference to parent transaction"
+    },
+    "locker_id": {
+      "type": "string"
+    },
+    "locker_number": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "user_role": {
+      "type": "string",
+      "enum": [
+        "seller",
+        "buyer",
+        "operator",
+        "system"
+      ],
+      "description": "Role of user performing the action"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "transaction_initiated",
+        "seller_fee_paid",
+        "seller_codes_generated",
+        "seller_facility_accessed",
+        "seller_locker_accessed",
+        "item_placed",
+        "seller_photo_uploaded",
+        "seller_locker_closed",
+        "seller_codes_expired",
+        "buyer_access_released",
+        "buyer_notified",
+        "buyer_fee_paid",
+        "buyer_codes_generated",
+        "buyer_facility_accessed",
+        "buyer_locker_opened",
+        "buyer_photo_uploaded",
+        "buyer_locker_closed",
+        "locker_returned_to_inventory",
+        "late_fee_charged",
+        "late_fee_alert_sent",
+        "force_pickup_initiated",
+        "buyer_codes_invalidated",
+        "seller_retrieval_codes_generated",
+        "retrieval_fee_paid",
+        "dispute_opened",
+        "transaction_frozen",
+        "locker_removed_from_rotation",
+        "dispute_resolved",
+        "transaction_completed",
+        "transaction_cancelled",
+        "code_issued",
+        "code_revoked",
+        "access_granted",
+        "access_denied",
+        "flagged",
+        "escalated"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Fee amount if event is a charge"
+    },
+    "code_reference": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "success": {
+      "type": "boolean",
+      "default": true
+    },
+    "immutable": {
+      "type": "boolean",
+      "default": true,
+      "description": "Integrity flag \u2014 audit records cannot be edited"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "transaction_id",
+    "event_type",
+    "user_role"
+  ]
+}
